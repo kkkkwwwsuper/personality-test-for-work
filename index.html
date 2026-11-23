@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>12 道题，测出你适合什么工作</title>
+<style>
+  :root{
+    --navy:#1F3864; --ink:#1a1a1a; --gray:#6b7280; --line:#e5e7eb;
+    --bg:#f7f8fa; --card:#ffffff; --accent:#FF6B4A;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    line-height:1.65;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 0 40px;min-height:100vh;background:var(--card)}
+  .hero{background:var(--navy);color:#fff;padding:44px 26px 34px;border-radius:0 0 28px 28px}
+  .kicker{font-size:12px;letter-spacing:.18em;opacity:.75;margin-bottom:14px}
+  .hero h1{margin:0 0 12px;font-size:30px;line-height:1.28;letter-spacing:-.5px}
+  .hero h1 em{font-style:normal;color:#FFB4A2}
+  .hero p{margin:0;font-size:14px;opacity:.82;line-height:1.7}
+  .meta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .pill{font-size:12px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12)}
+  .body{padding:26px}
+  .btn{
+    display:block;width:100%;padding:17px;border:0;border-radius:14px;
+    background:var(--accent);color:#fff;font-size:17px;font-weight:700;
+    cursor:pointer;font-family:inherit;letter-spacing:.02em;
+  }
+  .btn:active{transform:scale(.99)}
+  .btn.ghost{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+  .hint{font-size:12px;color:var(--gray);text-align:center;margin-top:12px}
+
+  /* question */
+  .bar{height:5px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:8px}
+  .bar>i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+  .count{font-size:12px;color:var(--gray);margin-bottom:22px}
+  .q{font-size:21px;font-weight:700;line-height:1.5;margin:0 0 22px;letter-spacing:-.2px}
+  .opt{
+    display:block;width:100%;text-align:left;padding:16px 18px;margin-bottom:11px;
+    background:#fff;border:1.5px solid var(--line);border-radius:14px;
+    font-size:15.5px;line-height:1.55;color:var(--ink);cursor:pointer;font-family:inherit;
+    transition:border-color .15s,background .15s;
+  }
+  .opt:hover{border-color:#c7cdd8}
+  .opt:active{background:#fafbfc}
+  .opt b{color:var(--navy);margin-right:8px;font-weight:700}
+
+  /* result */
+  .rtype{font-size:13px;letter-spacing:.2em;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .rname{font-size:34px;font-weight:800;margin:0;letter-spacing:-.5px;color:var(--navy)}
+  .rtag{font-size:15px;color:var(--gray);margin:6px 0 22px}
+  .score{margin:18px 0 6px}
+  .score .row{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:13px}
+  .score .row span:first-child{width:62px;color:var(--gray);flex:none}
+  .score .track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+  .score .track i{display:block;height:100%;background:var(--navy);width:0}
+  .score .row.main .track i{background:var(--accent)}
+  .score .row b{width:26px;text-align:right;color:var(--ink);font-weight:600;flex:none}
+
+  .card{background:var(--bg);border-radius:16px;padding:20px;margin:16px 0}
+  .card h3{margin:0 0 12px;font-size:14px;letter-spacing:.06em;color:var(--navy)}
+  .card p{margin:0;font-size:14.5px;color:#374151}
+  .card ul{margin:0;padding-left:18px;font-size:14.5px;color:#374151}
+  .card li{margin-bottom:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;padding:7px 13px;background:#fff;border:1px solid var(--line);border-radius:999px;color:var(--ink)}
+  .qa{font-size:14px;color:#374151}
+  .qa b{display:block;color:var(--navy);margin-bottom:4px;font-size:13.5px}
+  .cta{margin:26px 0 6px;padding:22px;border-radius:18px;background:var(--navy);color:#fff}
+  .cta h3{margin:0 0 8px;font-size:17px}
+  .cta p{margin:0 0 16px;font-size:13.5px;opacity:.82;line-height:1.7}
+  .cta .btn{background:var(--accent)}
+  .foot{font-size:11.5px;color:#9ca3af;text-align:center;padding:18px 26px 0;line-height:1.8}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 封面 -->
+  <section id="screen-intro">
+    <div class="hero">
+      <div class="kicker">求职 · 自我认知</div>
+      <h1>12 道题，<br>测出你<em>适合什么工作</em></h1>
+      <p>不是 MBTI。这是按「求职场景」设计的一组题：你接到任务怎么动手、团队里被安排做什么、简历上该放什么。</p>
+      <div class="meta">
+        <span class="pill">2 分钟</span>
+        <span class="pill">4 种类型</span>
+        <span class="pill">免费</span>
+      </div>
+    </div>
+    <div class="body">
+      <button class="btn" id="start">开始测试 →</button>
+      <p class="hint">凭第一反应选，别想太久</p>
+    </div>
+  </section>
+
+  <!-- 题目 -->
+  <section id="screen-quiz" class="hidden">
+    <div class="body">
+      <div class="bar"><i id="progress"></i></div>
+      <div class="count" id="count">第 1 / 12 题</div>
+      <h2 class="q" id="qtext"></h2>
+      <div id="opts"></div>
+    </div>
+  </section>
+
+  <!-- 结果 -->
+  <section id="screen-result" class="hidden">
+    <div class="body">
+      <div class="rtype" id="rtype-en">RESULT</div>
+      <h1 class="rname" id="rname"></h1>
+      <p class="rtag" id="rtag"></p>
+
+      <div class="score" id="score"></div>
+
+      <div class="card">
+        <h3>你是这样的人</h3>
+        <p id="rdesc"></p>
+      </div>
+
+      <div class="card">
+        <h3>三个优势</h3>
+        <ul id="rstrength"></ul>
+      </div>
+
+      <div class="card">
+        <h3>适合的岗位方向</h3>
+        <div class="chips" id="rroles"></div>
+      </div>
+
+      <div class="card">
+        <h3>简历该怎么写</h3>
+        <p id="rresume"></p>
+      </div>
+
+      <div class="card">
+        <h3>面试大概率会问</h3>
+        <div class="qa">
+          <b id="rqq"></b>
+          <span id="rqa"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>尽量避开</h3>
+        <p id="ravoid"></p>
+      </div>
+
+      <div class="cta">
+        <h3>测完了，然后呢？</h3>
+        <p id="cta-note">知道方向只是第一步。简历上怎么把这些优势写成 HR 看得懂的话，才是拿到面试的关键。</p>
+        <button class="btn" id="cta-btn">私信「简历」，帮你改</button>
+      </div>
+
+      <p class="hint" id="secondary"></p>
+      <button class="btn ghost" id="restart" style="margin-top:14px">再测一次</button>
+    </div>
+  </section>
+
+  <p class="foot">
+    本测试为原创求职倾向自评，不构成职业测评或心理诊断。<br>
+    结果仅供求职参考。
+  </p>
+</div>
+
+<script>
+/* ---------- 可改配置 ---------- */
+const CONFIG = {
+  ctaText: "私信「简历」，帮你改",
+  ctaNote: "知道方向只是第一步。简历上怎么把这些优势写成 HR 看得懂的话，才是拿到面试的关键。",
+};
+
+/* ---------- 四种类型 ---------- */
+const TYPES = {
+  hunter: {
+    en: "HUNTER · 猎手型",
+    name: "猎手型",
+    tag: "先开枪，再瞄准。你受不了原地不动。",
+    desc: "你对「没结果」的忍耐度很低。比起把方案打磨到完美，你更愿意先跑起来，用真实反馈修正方向。压力对你不是阻力，反而会让你更集中。你不怕被拒绝，怕的是没机会出手。",
+    strengths: ["目标感强，能自己给自己上发条", "抗压，越到节点越稳", "推进力强，能把事从「讨论」推到「落地」"],
+    roles: ["销售 / 大客户", "BD / 渠道", "增长运营", "客户经理", "创业公司早期岗"],
+    resume: "用数字说话：签下多少客户、做到多少 GMV、增长率多少、回款周期缩短多少。每一行都带结果，别写「负责」写「做到」。",
+    q: "「你怎么看待失败？」",
+    a: "别答「我不怕失败」。讲一次你快速试错、及时止损、最后翻盘的具体事：当时判断是什么、错了哪一步、多久纠正、结果如何。",
+    avoid: "流程极重、决策链长、三个月才动一次的岗位，会把你磨到自我怀疑。",
+  },
+  builder: {
+    en: "BUILDER · 工匠型",
+    name: "工匠型",
+    tag: "把一件事做到别人替代不了。",
+    desc: "你不太在意场面上的热闹，更在意东西本身够不够好。你愿意为一个细节反复改，也享受「从无到有」的过程。别人觉得枯燥的地方，你能坐得住，这本身就是稀缺能力。",
+    strengths: ["专注，能长时间沉浸在一件事里", "逻辑清晰，习惯先拆结构再动手", "交付质量稳定，经得起检查"],
+    roles: ["研发 / 算法", "产品经理", "设计", "数据分析", "内容 / 研究"],
+    resume: "作品集比形容词有用。写清楚项目难点在哪、你用了什么方法、最后指标变成多少。有 GitHub / 作品链接一定放。",
+    q: "「讲一个你做过最复杂的项目。」",
+    a: "按「背景—难点—你的方案—结果—复盘」五段讲。重点放在「你个人做了什么决策」，而不是「团队做了什么」。",
+    avoid: "纯执行、不给思考空间、只按模板填的岗位，你会很快失去兴趣。",
+  },
+  connector: {
+    en: "CONNECTOR · 联结型",
+    name: "联结型",
+    tag: "你的资源，是人。",
+    desc: "你对情绪和关系很敏感，能快速判断一个人在想什么。你不喜欢硬碰硬，更擅长把对立的两方拉到一张桌子上。很多事卡住不是因为方案不好，是因为没人去沟通——这恰好是你最擅长的位置。",
+    strengths: ["共情强，能读懂对方真实诉求", "沟通协调，能推动跨部门合作", "让人愿意配合，团队黏合剂"],
+    roles: ["市场 / 品牌", "HR / 招聘", "客户成功", "公关 / 商务", "社群运营"],
+    resume: "写协作类成果：协调了几个部门、覆盖多少人、活动效果如何、客户满意度提升多少。能写「影响范围」就别只写「参与」。",
+    q: "「遇到很难沟通的人怎么办？」",
+    a: "讲一次真实的冲突：对方为什么抵触、你做了什么让对方松口、最后结果。别只说「我很有耐心」，要有具体动作。",
+    avoid: "长期独自工作、零交流、纯对着数据的岗位，你会觉得被抽空。",
+  },
+  guardian: {
+    en: "GUARDIAN · 守序型",
+    name: "守序型",
+    tag: "让复杂的事，不出错。",
+    desc: "你对细节和规则有天然的敏感。别人嫌麻烦的核对、归档、流程，你能做得又快又稳。你不追求惊艳，你追求「交给你就放心」。在一个都在往前冲的团队里，你是那个让车不翻的人。",
+    strengths: ["严谨，错误率低", "责任心强，答应的事一定闭环", "风险意识好，能提前发现坑"],
+    roles: ["财务 / 审计", "法务 / 合规", "质量管理", "行政 / 运营支持", "项目PMO"],
+    resume: "强调「零差错」和「流程优化」：经手多少笔无差错、把某流程耗时压缩多少、通过什么审核。稳定本身就是卖点。",
+    q: "「怎么处理又急又重要的事？」",
+    a: "讲你的优先级判断标准和预案习惯：先确认截止时间和影响面，再排顺序，同时同步风险给相关人。举一个真实例子。",
+    avoid: "规则天天变、纯靠感觉决策、没人看流程的团队，你会很痛苦。",
+  },
+};
+
+/* ---------- 12 道题 ---------- */
+const QUESTIONS = [
+  { q: "接到一个没做过的任务，你第一反应是？", o: [
+    ["hunter", "先干起来，边做边改"],
+    ["builder", "先拆步骤，想清楚再动"],
+    ["connector", "先找人问问谁做过"],
+    ["guardian", "先确认要求和边界"],
+  ]},
+  { q: "团队里，你常被安排去做？", o: [
+    ["hunter", "去谈、去推、去拿结果"],
+    ["builder", "把方案做扎实"],
+    ["connector", "协调各方、对外沟通"],
+    ["guardian", "把关质量、盯流程"],
+  ]},
+  { q: "简历上，你最想突出的是？", o: [
+    ["hunter", "业绩数字"],
+    ["builder", "作品和项目"],
+    ["connector", "跨部门协作"],
+    ["guardian", "零差错、合规"],
+  ]},
+  { q: "面试被问「你的缺点」，你更可能说？", o: [
+    ["hunter", "太急，有时忽略细节"],
+    ["builder", "太钻，容易陷进去"],
+    ["connector", "太顾别人感受，不好拒绝"],
+    ["guardian", "偏保守，变化时反应慢"],
+  ]},
+  { q: "你最受不了哪种同事？", o: [
+    ["hunter", "只说不做"],
+    ["builder", "做事没章法"],
+    ["connector", "不沟通，自己闷头干"],
+    ["guardian", "不守规则、乱来"],
+  ]},
+  { q: "理想的工作节奏是？", o: [
+    ["hunter", "快、有挑战、能看见结果"],
+    ["builder", "有深度、能持续打磨"],
+    ["connector", "和人打交道多、氛围好"],
+    ["guardian", "稳定、可预期"],
+  ]},
+  { q: "拿到一个很模糊的需求，你会？", o: [
+    ["hunter", "先给个版本试水"],
+    ["builder", "先画框架再确认"],
+    ["connector", "先约对方聊清楚"],
+    ["guardian", "先要一份书面说明"],
+  ]},
+  { q: "你更愿意为了什么加班？", o: [
+    ["hunter", "冲一个节点、拿下一个客户"],
+    ["builder", "把东西做到自己满意"],
+    ["connector", "帮团队救火"],
+    ["guardian", "处理突发风险"],
+  ]},
+  { q: "同事评价你，最可能用哪个词？", o: [
+    ["hunter", "有冲劲"],
+    ["builder", "专业"],
+    ["connector", "好相处"],
+    ["guardian", "细心"],
+  ]},
+  { q: "选公司，你更看重？", o: [
+    ["hunter", "增长快、机会多"],
+    ["builder", "能学到真本事"],
+    ["connector", "团队氛围和文化"],
+    ["guardian", "稳定和福利"],
+  ]},
+  { q: "项目失败，你的第一反应是？", o: [
+    ["hunter", "复盘怎么翻盘"],
+    ["builder", "找哪一步方法错了"],
+    ["connector", "先安抚团队"],
+    ["guardian", "检查流程哪里漏了"],
+  ]},
+  { q: "你希望三年后的自己是？", o: [
+    ["hunter", "带团队、扛指标"],
+    ["builder", "某个领域的专家"],
+    ["connector", "人脉广、能整合资源"],
+    ["guardian", "在一家好公司稳稳晋升"],
+  ]},
+];
+
+/* ---------- 逻辑 ---------- */
+const $ = (id) => document.getElementById(id);
+let idx = 0;
+const scores = { hunter: 0, builder: 0, connector: 0, guardian: 0 };
+
+function show(id) {
+  ["screen-intro", "screen-quiz", "screen-result"].forEach((s) =>
+    $(s).classList.toggle("hidden", s !== id)
+  );
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[idx];
+  $("count").textContent = `第 ${idx + 1} / ${QUESTIONS.length} 题`;
+  $("progress").style.width = `${(idx / QUESTIONS.length) * 100}%`;
+  $("qtext").textContent = q.q;
+  const box = $("opts");
+  box.innerHTML = "";
+  q.o.forEach(([type, text]) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.innerHTML = `<b>${"ABCD"[q.o.findIndex((x) => x[0] === type)]}</b>${text}`;
+    b.onclick = () => pick(type);
+    box.appendChild(b);
+  });
+}
+
+function pick(type) {
+  scores[type]++;
+  idx++;
+  if (idx < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    renderResult();
+  }
+}
+
+function renderResult() {
+  $("progress").style.width = "100%";
+  const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const [mainKey, mainScore] = ranked[0];
+  const [secondKey, secondScore] = ranked[1];
+  const t = TYPES[mainKey];
+
+  $("rtype-en").textContent = t.en;
+  $("rname").textContent = t.name;
+  $("rtag").textContent = t.tag;
+  $("rdesc").textContent = t.desc;
+
+  $("rstrength").innerHTML = t.strengths.map((s) => `<li>${s}</li>`).join("");
+  $("rroles").innerHTML = t.roles.map((r) => `<span class="chip">${r}</span>`).join("");
+  $("rresume").textContent = t.resume;
+  $("rqq").textContent = t.q;
+  $("rqa").textContent = t.a;
+  $("ravoid").textContent = t.avoid;
+
+  const max = Math.max(...Object.values(scores), 1);
+  $("score").innerHTML = Object.entries(TYPES)
+    .map(([k, v]) => {
+      const s = scores[k];
+      const w = Math.round((s / max) * 100);
+      return `<div class="row ${k === mainKey ? "main" : ""}">
+        <span>${v.name}</span>
+        <div class="track"><i style="width:${w}%"></i></div>
+        <b>${s}</b>
+      </div>`;
+    })
+    .join("");
+
+  $("secondary").textContent =
+    secondScore > 0
+      ? `你的次类型是「${TYPES[secondKey].name}」。主类型决定方向，次类型决定你在团队里补位的方式。`
+      : "";
+
+  $("cta-note").textContent = CONFIG.ctaNote;
+  $("cta-btn").textContent = CONFIG.ctaText;
+
+  show("screen-result");
+}
+
+$("start").onclick = () => {
+  idx = 0;
+  Object.keys(scores).forEach((k) => (scores[k] = 0));
+  renderQuestion();
+  show("screen-quiz");
+};
+
+$("restart").onclick = () => {
+  idx = 0;
+  Object.keys(scores).forEach((k) => (scores[k] = 0));
+  show("screen-intro");
+};
+
+$("cta-btn").onclick = () => {
+  alert("把这里换成你的联系方式，或引导对方私信你。\n\n在 CONFIG.ctaText 里改文案，在 onclick 里改成跳转。");
+};
+</script>
+</body>
+</html>
